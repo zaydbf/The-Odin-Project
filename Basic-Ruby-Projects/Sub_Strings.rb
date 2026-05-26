@@ -3,15 +3,13 @@ def substrings(text, dict)
   hash = Hash.new(0)
   dict.each do |element|
     n = text.scan(element).length # convert the element found in the string into a list : text = "how abhow how"  ==> text.scan("how") = ["how", "how", "how"]
-    if n > 0
-      hash[element] += n
-    end
+    hash[element] += n if n > 0
   end
-  return hash
+  hash
 end
 
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
-puts substrings("below", dictionary)
+puts substrings('below', dictionary)
 
 puts substrings("Howdy partner, sit down! How's it going?", dictionary)
