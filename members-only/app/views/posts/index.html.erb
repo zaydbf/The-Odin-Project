@@ -1,0 +1,24 @@
+<header>
+    <% if user_signed_in? %>
+        <p>Welcome <%= current_user.name %>!, If you want to create a new post please click this link : <%= link_to "New Post", new_post_path %></p>
+        <%= button_to "Sign Out", destroy_user_session_path, method: :delete %> 
+    <% else %>
+        <p>Please sign in to get the full experience</p>
+        <%= button_to "Sign In", new_user_session_path, method: :get %>
+        <p>Or if you don't have an account, feel free to Sign Up</p>
+        <%= button_to "Sign Up", new_user_registration_path, method: :get %>
+    <% end %>
+</header>
+<body>
+    <h1>The Secret ClubHouse</h1>
+    <% @posts.each do |post| %>
+        <h2><%= post.title %></h2>
+        <p><%= post.body %></p>
+        <h2>Author:</h2>
+        <% if user_signed_in? %>
+            <strong><%= post.user.name %></strong>
+        <% else %>
+            <strong>Anonymous [Members Only can know]</strong>
+        <% end %>
+    <% end %>
+</body>
