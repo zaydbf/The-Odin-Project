@@ -1,0 +1,28 @@
+<% if user_signed_in? %>
+    
+    <h1>Create a New Event</h1>
+    <%= form_with model: @event do |form| %>
+        <div>
+            <%= form.label :title %>
+            <%= form.text_field :title %>
+        </div>
+        <div>
+            <%= form.label :location %>
+            <%= form.text_field :location %>
+        </div>
+        <div>
+            <%= form.label :date %>
+            <%= form.date_field :date %>
+        </div>
+        <div>
+            <%= form.submit "Create Event" %>
+        </div>
+    <% end %>
+<% else %>
+    <div>
+        <h3> Please Sign in to create an event</h3>
+        <%= button_to "Sign In", new_user_session_path, method: :get %>
+    </div>
+<% end %>
+<div>
+    <%= link_to "Events", events_path %>

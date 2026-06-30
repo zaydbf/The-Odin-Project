@@ -1,0 +1,11 @@
+<h1><%= @user.name %>'s profile</h1>
+<h3>Created Events</h3>
+<ul>
+    <% @events.each do |event| %>
+        <li> <%= link_to event.title, event %> | <%= event.location %> | <%= event.date %> </li>
+    <% end %>
+</ul>
+
+<hr>
+
+<h3>Attending</h3>

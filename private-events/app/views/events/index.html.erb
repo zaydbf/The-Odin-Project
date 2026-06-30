@@ -1,0 +1,18 @@
+<h1>Add an Event</h1>
+    <%= button_to "Add an event", new_event_path, method: :get %>
+<hr>
+
+<h1>Available Events</h1>
+<ul>
+    <% @events.upcoming.each do |event| %>
+        <li> <%= link_to event.title, event %> | <%= event.location %> | <%= event.date %> </li>
+    <% end %>
+</ul>
+
+<br>
+<h1>Past Events</h1>
+<ul>
+    <% @events.past.each do |event| %>
+        <li> <%= link_to event.title, event %> | <%= event.location %> | <%= event.date %> </li>
+    <% end %>
+</ul>
