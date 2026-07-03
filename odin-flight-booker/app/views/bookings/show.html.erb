@@ -1,0 +1,21 @@
+<h1>Booking Confirmed!</h1>
+<p>Thank you for choosing Odin Airlines. Your booking details are below:</p>
+
+<div class="booking-confirmation" style="border: 2px solid green; padding: 20px; border-radius: 5px;">
+  <h3>Booking ID: #<%= @booking.id %></h3>
+  <p><strong>Flight:</strong> <%= @booking.flight.departure_airport.code %> to <%= @booking.flight.arrival_airport.code %></p>
+  <p><strong>Departure Time:</strong> <%= @booking.flight.departure_time.strftime("%B %d, %Y at %I:%M %p") %></p>
+  
+  <hr>
+  
+  <h3>Passenger Manifest</h3>
+  <ul>
+    <% @booking.passengers.each_with_index do |passenger, index| %>
+      <li>
+        <strong>Passenger <%= index + 1 %>:</strong> <%= passenger.name %> (<%= passenger.email %>)
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<p><%= link_to "Book Another Flight", root_path %></p>
